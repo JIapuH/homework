@@ -1,0 +1,299 @@
+/*----- Вся страница -----*/
+
+*,
+*::before,
+*::after,
+p {
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+/*----- Задание 1 -----*/
+
+.level-01-block {
+    width: 500px;
+    height: 500px;
+    background-color: #0d5825;
+}
+
+blockquote {
+    font-size: 25px;
+    color: #fff;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.level-01-text::before {
+    content: '"';
+}
+
+.level-01-text::after {
+    content: '"';
+}
+
+/*----- Расположение и анимация для карт -----*/
+
+.level-01-card-01 {
+    height: 150px; transform: translate(160px, 180px) rotate(-30deg);
+    transition: all .3s ease-in-out;
+}
+
+.level-01-card-01:hover {
+    height: 150px; transform: translate(160px, 160px) rotate(-30deg);
+    transition: all .3s ease-in-out;
+}
+
+.level-01-card-02 {
+    height: 150px; transform: translate(90px, 185px) rotate(-10deg);
+    transition: all .3s ease-in-out;
+}
+
+.level-01-card-02:hover {
+    height: 150px; transform: translate(90px, 165px) rotate(-10deg);
+    transition: all .3s ease-in-out;
+}
+
+.level-01-card-03 {
+    height: 150px; transform: translate(22px, 200px) rotate(12deg);
+    transition: all .3s ease-in-out;
+}
+
+.level-01-card-03:hover {
+    height: 150px; transform: translate(22px, 180px) rotate(12deg);
+    transition: all .3s ease-in-out;
+}
+
+.level-03 {
+    margin-top: 150px;
+}
+
+/*----- Задание 2,
+строим кубики на псевдо-элементах -----*/
+
+.level-02-block {
+    height: 60px;
+    width: 60px;
+    background-color: #60F797;
+    transform: translate(90px, 90px);
+}
+
+.level-02-block::before {
+    content: "";
+    display: block;
+    height: 60px;
+    width: 60px;
+    background-color: #F8828B;
+    transform: translate(-65px, -65px);
+}
+
+.level-02-block::after {
+    content: "";
+    display: block;
+    height: 60px;
+    width: 60px;
+    background-color: #867FEB;
+    transform: translate(-35px, -90px);
+}
+
+/*----- Задание 2,
+строим кубики на 3 div блоках -----*/
+
+.level-02-block-01 {
+    height: 60px;
+    width: 60px;
+    background-color: #F8828B;
+    transform: translate(20px, 0);
+}
+
+.level-02-block-02 {
+    position: relative;
+    z-index: 1;
+    height: 60px;
+    width: 60px;
+    background-color: #867FEB;
+    transform: translate(55px, -15px);
+}
+
+.level-02-block-03 {
+    height: 60px;
+    width: 60px;
+    background-color: #60F797;
+    transform: translate(90px, -30px);
+}
+
+/*----- Задание 3
+Задаём размеры меню, до и после наведения, с анимацией
+длительностью 1 секунда-----*/
+
+.level-03-block {
+    background-color: #7E7E7E;
+    width: 30px;
+    height: 300px;
+    transition: all 1s ease 0.1s;
+}
+
+.level-03-block:hover {
+    background-color: #7E7E7E;
+    width: 300px;
+    height: 300px;
+    transition: all 1s ease 0.1s;
+}
+
+
+/*----- Стилизуем слово меню -----*/
+
+.menu {
+    margin: auto;
+    visibility: visible;
+    text-transform: uppercase;
+    color: #fff;
+    writing-mode: vertical-rl;
+    transition: all 0.6s ease 0.3s;
+    text-align: center;
+}
+
+/*----- При наведении на блок - скрываем надпись
+"Menu Here" -----*/
+
+.level-03-block:hover > .menu {
+    visibility: hidden;
+    transition: all 0.1s ease;
+    /*display: none;*/
+}
+
+/*----- Блок навигации скрыт по-умолчанию -----*/
+
+.nav {
+    visibility: hidden;
+    /*display: none;*/
+}
+
+/*----- При наведении на блок - появляется навигация -----*/
+
+.level-03-block:hover > .nav {
+    visibility: visible;
+    transition: all 1s ease 0.5s;
+    /*display: inline-block;*/
+}
+
+/*----- Стилизуем ссылки в навигации -----*/
+
+.menu_link {
+    display: block;
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 10px 0 10px 40px;
+    text-decoration: none;
+}
+
+/*----- При наведении на ссылку меняте цвет на жёлтый -----*/
+
+.menu_link:hover {
+    color:#CE9315;
+    transition: all 0.2s ease;
+}
+
+/*----- Верхний отспу у первого элемента -70 пикселей -----*/
+
+.menu_link:first-child {
+    margin-top: -70px;
+}
+
+/*----- С помощтю псеводоэллемента создаём ромбик перед
+навигацией -----*/
+
+.menu_link::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #CE9315;
+    border: 2px solid #605133;
+    transform: rotate(-45deg);
+    margin-right: 5px;
+}
+
+/*----- Задание 4 -----*/
+
+.level-04-block {
+    width: 500px;
+    height: 500px;
+
+    margin: 20px 0 20px 20px;
+}
+
+.level-04-block-small {
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;
+    position: relative;
+    left: 0;
+
+    animation-name: small-block;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+@keyframes small-block {
+    0% {
+        left: 0;
+        bottom: 0px;
+    }
+
+    12% {
+        background-color: #800080;
+        bottom: -200px;
+        left: 0;
+    }
+
+    25% {
+        background-color: #0000FF;
+        bottom: -400px;
+        left: 0;
+    }
+
+    37% {
+        background-color: #136913;
+        bottom: -400px;
+        left: 200px;
+    }
+
+    50% {
+        background-color: #008000;
+        bottom: -400px;
+        left: 400px;
+    }
+
+    62% {
+        background-color: #0fc10f;
+        bottom: -200px;
+        left: 400px;
+    }
+
+    74% {
+        background-color: #FFFF00;
+        bottom: 0;
+        left: 400px;
+    }
+
+    86% {
+        background-color: #FFA500;
+        bottom: 0;
+        left: 200px;
+    }
+
+    100% {
+        left: 0;
+        bottom: 0px;
+    }
+}

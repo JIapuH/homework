@@ -1,0 +1,41 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.second-level {
+    width: 350px;
+    height: 220px;
+    padding: 15px 10px 20px;
+    margin-bottom: 30px;
+    border: 2px dotted #ff0000;
+    background-color: #00FF00;
+}
+
+.third-level {
+    float: left;
+    width: 600px;
+
+}
+
+.first-img {
+    float: left;
+    width: 200px;
+    margin: 0 20px 15px 0;
+}
+
+.second-img {
+    float: right;
+    width: 150px;
+    clear: left;
+    margin: 20px 0 20px 20px;
+}
+
+p {
+    text-align: justify;
+}

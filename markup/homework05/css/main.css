@@ -1,0 +1,208 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+}
+
+.container {
+    max-width: 100%;
+    min-height: 100vh;
+	overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #D3B714;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav_link {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+    margin-left: 20px;
+}
+
+.nav_link:first-child {
+    margin-left: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-grow: 1;
+}
+
+.aside_1 {
+    background-color: #c798B9;
+    min-width: 210px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    order: -1;
+}
+
+.aside_2 {
+    background-color: #9cb1c7;
+    min-width: 210px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.section {
+    margin: 0 40px;
+    /*flex-shrink: 999999; только так получилось добиться, чтобы Aside были по 210px или через min-width*/
+}
+
+.text {
+    text-align: center;
+    font-size: 22px;
+    margin: 40px 0 40px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main_box {
+    width: 300px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 40px;
+    box-shadow: none;
+    transition: box-shadow 1s ease;
+}
+
+.main_box:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: box-shadow .3s ease;
+}
+
+.main_box_text {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.img {
+    width: 100%;
+}
+
+.main_box_img {
+    margin: 20px 0;
+    text-align: center;
+    width: 115px;
+    height: 115px;
+    border: 10px solid #c7b7b7;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.main_box_link {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 30px;
+    background-color: #685174;
+    border-radius: 15px;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    transition: background-color .5s ease;
+}
+
+.main_box_link:hover {
+    background-color: #55238a;
+    transition: background-color .5s ease;
+}
+
+.holder {
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    border: 3px solid #000;
+    margin: 0 auto 10px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
+.item {
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.item1 {
+    width: 50%;
+    background-color: #fd644d;
+    order: 1;
+}
+
+.item2 {
+    width: 33%;
+    background-color: #4983b2;
+    order: 4;
+    flex-grow: 1;
+}
+
+.item3 {
+    width: 33%;
+    background-color: #663797;
+    order: 3;
+}
+
+.item4 {
+    width: 33%;
+    background-color: #0e7f12;
+    order: 5;
+}
+
+.item5 {
+    width: 50%;
+    background-color: #fda429;
+    order: 2;
+}
+
+.footer {
+    background-color: #86ec86;
+    padding: 20px;
+    text-align: center;
+    flex-grow: 0;
+}

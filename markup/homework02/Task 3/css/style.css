@@ -1,0 +1,15 @@
+#greycol{
+    color: grey;
+}
+.yellow{
+    color: yellow;
+}
+.text-box h3:first-child{
+    color: pink;
+}
+.text-box p:nth-last-child(2) {
+    color: green;
+}
+.text-box div p{
+    color: red;
+}
