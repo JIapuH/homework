@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>A-level / JS / HomeWork02</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="src/main.js"></script>
+        <link rel="stylesheet" href="src/normalize.css">
+        <link rel="stylesheet" href="src/main.css">
+        <link rel="icon" href="src/favicon.ico">
+    </head>
+</head>
+<body>
+    <div class="container">
+        <div class="practice">
+            <h3>assign: evaluation</h3>
+            <div class="button"><button onclick="assignEvaluation()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="assignEvaluationRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Number: age</h3>
+            <div class="button"><button onclick="numberAge()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="numberAgeRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Number: temperature</h3>
+            <div class="button"><button onclick="numberTemperature()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="numberTemperatureRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Number: divide</h3>
+            <div class="button"><button onclick="numberDivide()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="numberDivideRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Number: odd</h3>
+            <div class="button"><button onclick="numberOdd()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="numberOddRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">String: greeting</h3>
+            <div class="button"><button onclick="stringGreeting()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="stringGreetingRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">String: lexics</h3>
+            <div class="button"><button onclick="stringLexics()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="stringLexicsRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">confirm</h3>
+            <div class="button"><button onclick="confirmFn()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="confirmRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Boolean</h3>
+            <div class="button"><button onclick="booleanFn()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="BooleanRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Boolean: if</h3>
+            <div class="button"><button onclick="booleanIf()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="booleanIfRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Array: booleans</h3>
+            <div class="button"><button onclick="arrayBooleans()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="arrayBooleansRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Array: plus</h3>
+            <div class="button"><button onclick="arrayPlus()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="arrayPlusRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Array: plus string</h3>
+            <div class="button"><button onclick="arrayPlusString()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="arrayPlusStringRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Object: real</h3>
+            <div class="button"><button onclick="objectReal()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="objectRealRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Object: change</h3>
+            <div class="button"><button onclick="objectChange()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="objectChangeRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Comparison if</h3>
+            <div class="button"><button onclick="comparisonIf()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="comparisonIfRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Comparison: sizes</h3>
+            <div class="button"><button onclick="comparisonSizes()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="comparisonSizesRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Comparison: object</h3>
+            <div class="button"><button onclick="comparisonObject()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="comparisonObjectRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Ternary</h3>
+            <div class="button"><button onclick="ternary()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="ternaryRes" class="result"></div>
+        </div>
+
+        <div class="practice">
+            <h3 class="head">Number: flats</h3>
+            <div class="button"><button onclick="numberflats()">Выполнить скрипт</button></div>
+            <p class="result-head">Результат</span>
+            <div id="numberflatsRes" class="result"></div>
+        </div>
+</body>
+</html>
