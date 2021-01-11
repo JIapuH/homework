@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+      <p><b>Первый операнд:</b><br>
+      <input type="number" id="someIdOfInput1">
+      <p><b>Второй операнд:</b><br>
+      <input type="number" id="someIdOfInput2"><br><br>
+      <button id="plus1" value="+">+</button>
+      <button id="minus1" value="-">-</button>
+      <button id="umn1" value="*">*</button>
+      <button id="del1" value="/">/</button><br>
+      <p><b>Результат:</b><br>
+      <input type="number" id="result1">
+      <br><br><hr>
+      <p><b>Первый операнд:</b><br>
+        <input type="number" id="someIdOfInput1a">
+        <p><b>Второй операнд:</b><br>
+        <input type="number" id="someIdOfInput2a"><br><br>
+        <p><b>Cумма:</b><br>
+        <input type="number" id="plusresult">
+        <script>
+
+          plus1.onclick = function(){
+          alert((+someIdOfInput1.value) + (+someIdOfInput2.value))
+          return result1.value = (+someIdOfInput1.value) + (+someIdOfInput2.value)
+        }
+          minus1.onclick = function(){
+          alert((+someIdOfInput1.value) - (+someIdOfInput2.value))
+          return result1.value = (+someIdOfInput1.value) - (+someIdOfInput2.value)
+        }
+          umn1.onclick = function(){
+          alert((+someIdOfInput1.value) * (+someIdOfInput2.value))
+          return result1.value = (+someIdOfInput1.value) * (+someIdOfInput2.value)
+        }
+          del1.onclick = function(){
+          alert((+someIdOfInput1.value) / (+someIdOfInput2.value))
+          return result1.value = (+someIdOfInput1.value) / (+someIdOfInput2.value)
+        }
+
+        function plus2() {
+        plusresult.value = (+someIdOfInput1a.value) + (+someIdOfInput2a.value)
+}
+
+        someIdOfInput1a.oninput = plus2
+        someIdOfInput2a.oninput = plus2
+
+        </script>
+    </body>
+</html>
