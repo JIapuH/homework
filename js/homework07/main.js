@@ -1,5 +1,22 @@
-// sort НЕ ГОТОВО
+// sort (C помощью Intl.Collator)
+function byField(field, order) {
+    let collator = new Intl.Collator(["en", "ru"], {
+        numeric: true
+    });
+    order = order ? 1 : -1;
+    return function(a, b) {
+        return order * collator.compare(a[field], b[field])
+    };
+}
+let persons = [
+  {name: "Иван", age: 17},
+  {name: "Мария", age: 35},
+  {name: "Алексей", age: 73},
+  {name: "Яков", age: 12},
+]
 
+persons.sort(byField('age'));
+persons.sort(byField('name', true));
 
 // array map
 
