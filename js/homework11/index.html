@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>HW 11</title>
+</head>
+
+<body>
+    <script>
+        fetch('https://swapi.dev/api/people/1/')
+            .then((res) => res.json())
+            .then((luke) => drawStarWars(document.body, luke));
+
+        function drawStarWars(parent, obj) {
+            let table = document.createElement('table');
+            let caption = document.createElement('caption');
+            caption.innerText = obj.name || obj.title
+            delete obj.title
+            delete obj.name
+
+            table.append(caption)
+            table.style = 'border: 1px solid black;';
+            parent.append(table);
+            for (let key in obj) {
+                let tr = document.createElement('tr');
+
+                let th = document.createElement('th');
+                th.innerText = key
+
+                let td = document.createElement('td');
+                td.innerText = obj[key];
+
+                table.append(tr);
+                tr.append(th)
+
+                delete obj.url
+
+                if (typeof obj[key] == 'string') {
+                    let str = obj[key];
+                    if (str.startsWith('http://swapi.dev/api/')) {
+                        td.innerText = '';
+                        let button = document.createElement('button');
+                        button.innerText = 'fetch';
+
+                        td.append(button);
+
+                        button.onclick = () =>
+                            fetch(obj[key])
+                            .then((res) => res.json())
+                            .then((luke) => drawStarWars(td, luke));
+                    }
+                }
+
+                if (Array.isArray(obj[key])) {
+                    let [...arr] = obj[key];
+                    td.innerText = '';
+                    for (let key of arr) {
+                        let button = document.createElement('button');
+                        button.innerText = 'fetch';
+
+                        td.append(button);
+
+                        button.onclick = () =>
+                            fetch(key)
+                            .then((res) => res.json())
+                            .then((luke) => drawStarWars(td, luke));
+                    }
+                }
+
+                tr.append(td);
+                td.style = 'border: 1px solid black;';
+                tr.style = 'border: 1px solid black;';
+            }
+        }
+        // myfetch
+
+        function myfetch(url) {
+            return new Promise(function (resolve, reject) {
+                let xhr = new XMLHttpRequest();
+                xhr.onerror = () => reject(new Error('Error.'));
+                xhr.open('GET', url);
+                xhr.responseType = 'json';
+                xhr.onload = () => {
+                    if (xhr.status != 200) reject(new Error('Error'));
+                    else resolve(xhr.response)
+                }
+                xhr.send();
+            });
+        }
+
+        myfetch('https://swapi.dev/api/people/1/')
+            .then((luke) => console.log(luke));
+
+        // race
+
+        const delay = (ms) => new Promise((ok) => setTimeout(() => ok(ms), ms));
+
+        Promise.race([delay(Math.random() * 1000), myfetch('https://swapi.dev/api/people/1/')])
+            .then((first) => console.log(first));
+    </script>
+</body>
+
+</html>
