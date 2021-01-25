@@ -35,16 +35,18 @@ alert(value3 === value4);
 
 // Final Countdown
 
-let text = [5, 4, 3, 2, 1, "поехали"]
+function finalCountdown (startNum) {
+  startNum += 1;
+  for (let i = 1; i <= startNum; i++) {
+    setTimeout(() => {
+      i == startNum ? console.log("поехали!") : console.log(startNum - i);
+    }, 1000 * i);
+  }
+};
 
-for (let i = 0; i < text.length; i++) {
-  setTimeout(function () {
-    console.log(text[i])
-  }, 1000 * i);
-}
+finalCountdown(5);
 
-// myBind (НЕ ДОКРУТИЛ)
-
+// myBind
 function myBind(func, obj, prms) {
   let fn = func.bind(obj)
   return function (...params) {

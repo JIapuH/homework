@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>HW 10, RGB</title>
+</head>
+
+<body>
+    <div id='containers' style='display: flex; margin: 5px;'>
+        <div id='containerRed'>
+            <img src='src/red-circle.png' id='red' style='margin: 0 0 0 20px'>
+        </div>
+        <div id='containerGreen'>
+            <img src='src/green-circle.png' id='green' style='margin: 0 0 0 20px'>
+        </div>
+        <div id='containerBlue'>
+            <img src='src/blue-circle.png' id='blue' style='margin: 0 0 0 20px'>
+        </div>
+        <div id='result'
+            style='width: 150px; height: 150px; border-radius: 50%; background: transparent; margin: 0 0 0 40px'>
+        </div>
+    </div>
+
+    <input id='inputRed' type='number'>
+    <input id='inputGreen' type='number'>
+    <input id='inputBlue' type='number'>
+    <span id='resultText' style='margin: 0 0 0 35px'>
+
+        <script>
+            function Control(img, {
+                value = 0,
+                step = 1,
+                max = 255,
+                min = 0,
+                maxAngle = 360,
+                minAngle = 0
+            }) {
+
+                const ratio = (maxAngle - minAngle) / (max - min)
+
+                const value2Deg = () => (value - min) * ratio + minAngle
+
+                this.setValue = (newValue) => {
+                    if (newValue > max) newValue = max
+                    if (newValue < min) newValue = min
+
+                    value = newValue
+
+                    if (typeof this.onChange === 'function') this.onChange(value)
+                    img.style.transform = `rotate(${value2Deg()}deg)`;
+                }
+
+                const {
+                    top,
+                    left
+                } = img.getBoundingClientRect()
+                console.log(top, left, img.width)
+
+                this.changeValue = delta => this.setValue(value + delta)
+
+                img.onmousewheel = (e) => {
+                    this.changeValue(e.deltaY * step / 10)
+                    e.preventDefault()
+                }
+
+                img.onclick = (e) => {
+                    this.changeValue(e.clientX - left > img.width / 2 ? step : -step)
+                }
+
+                this.setValue(value)
+            }
+
+            const redControl = new Control(document.getElementById('red'), {
+                value: 0,
+                min: 0,
+                max: 255,
+                minAngle: 0,
+                maxAngle: 360
+            })
+
+            inputRed.oninput = () => redControl.setValue(+inputRed.value)
+
+            const greenControl = new Control(document.getElementById('green'), {
+                value: 0,
+                min: 0,
+                max: 255,
+                minAngle: 0,
+                maxAngle: 360
+            })
+
+            inputGreen.oninput = () => greenControl.setValue(+inputGreen.value)
+
+            const blueControl = new Control(document.getElementById('blue'), {
+                value: 0,
+                min: 0,
+                max: 255,
+                minAngle: 0,
+                maxAngle: 360
+            })
+
+            inputBlue.oninput = () => blueControl.setValue(+inputBlue.value)
+
+            function changeColor() {
+                let color = 'rgb(' + (inputRed.value || 0) + ', ' + (inputGreen.value || 0) + ', ' + (inputBlue.value || 0) + ')'
+                document.getElementById('result').style.background = color
+                document.getElementById('result').style.border = color
+                document.getElementById('resultText').textContent = color
+            }
+            redControl.onChange = function (value) {
+                inputRed.value = value
+                changeColor()
+            }
+            greenControl.onChange = function (value) {
+                inputGreen.value = value
+                changeColor()
+            }
+            blueControl.onChange = function (value) {
+                inputBlue.value = value
+                changeColor()
+            }
+        </script>
+</body>
+
+</html>

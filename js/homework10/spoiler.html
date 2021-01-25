@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HW 10, Spoiler</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <style>
+    .open {
+      color: green
+    }
+  </style>
+</head>
+
+<body>
+  <h2 class="spoiler-header" id="spoilerHeader">Lorem.</h2>
+  <div class="spoiler-body" id="spoilerBody">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa neque
+    voluptatibus voluptas dicta nam. Repellendus.</div>
+
+  <h2 class="spoiler-header" id="spoilerHeader2">Lorem, ipsum.</h2>
+  <div class="spoiler-body" id="spoilerBody2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+    incidunt unde delectus eum alias dignissimos, magni nostrum hic, quaerat natus ab fugit perferendis eius vitae
+    officiis saepe fugiat pariatur distinctio totam eveniet cum? Nam consectetur ullam quas blanditiis eveniet possimus.
+  </div>
+
+  <script>
+    function Spoiler(header, body, isOpen = false, openClass = 'open') {
+      this.setOpen = (newOpen) => {
+        isOpen = newOpen
+        body.style.display = isOpen ? '' : 'none'
+
+        if (isOpen) {
+          header.classList.add('open')
+        } else {
+          header.classList.remove('open')
+        }
+      }
+
+      this.setOpen(isOpen)
+      header.onclick = () => {
+        this.setOpen(!isOpen)
+        this.onOpenChange(isOpen)
+      }
+    }
+
+    let s = new Spoiler(spoilerHeader, spoilerBody, true)
+    s.onOpenChange = function (open) {
+      console.log(open)
+    }
+
+    let s2 = new Spoiler(spoilerHeader2, spoilerBody2, true)
+  </script>
+</body>
+
+</html>
