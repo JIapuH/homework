@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>HW 12</title>
+</head>
+
+<body>
+    <input type='text' id='nick' value='' placeholder='Введите ваш ник' />
+    <input type='text' id='message' value='' placeholder='Введите текст сообщения' />
+    <button id='send'>Отправить</button>
+    <div id='chat'></div>
+
+    <script>
+        let message = document.getElementById('message')
+        let chatBox = document.getElementById('chat');
+
+        async function jsonPost(url, data) {
+            const msg = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+            })
+            return msg.json();
+        }
+
+        let messagees = 0;
+        async function getMessage() {
+
+            const getMsg = await jsonPost('http://students.a-level.com.ua:10012', {
+                func: 'getMessages',
+                messageId: 0
+            })
+
+            for (let i = messagees; i < getMsg.nextMessageId; i++) {
+                let message = document.createElement('p');
+                let time = getMsg.data[i].timestamp;
+                let data = new Date(time);
+
+                let currentData =
+                    `<font color = darkred>[${data.getDate()}.${data.getMonth()+1}.${data.getFullYear()}]</font> <font color = darkblue>(${data.getHours()}:${data.getMinutes()}:${data.getSeconds()})</font>`
+                message.innerHTML =
+                    `${currentData} <b><font color = darkgreen><u>${getMsg.data[i].nick}:</u></font></b> ${getMsg.data[i].message}`
+                chat.prepend(message)
+                messagees = getMsg.nextMessageId
+            }
+        };
+
+        getMessage();
+
+        function delay(delayInms) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, delayInms);
+            });
+        }
+
+
+        async function checkUpdate() {
+            while (true) {
+                getMessage();
+                await delay(500);
+            }
+        }
+        checkUpdate()
+
+
+        async function sendMessage(nick, message) {
+
+            if (message.value != '' && nick.value != '') {
+                const msg = message.value;
+                message.value = '';
+                console.log('Получено новое сообщение');
+
+                await jsonPost('http://students.a-level.com.ua:10012', {
+                    func: 'addMessage',
+                    nick: `${nick.value}`,
+                    message: `${msg}`
+                });
+            }
+        }
+
+        async function sendAndCheck() {
+            await sendMessage(document.getElementById('nick'), document.getElementById('message'));
+            getMessage();
+        }
+
+        send.onclick = () => sendAndCheck();
+    </script>
+</body>
+
+</html>
