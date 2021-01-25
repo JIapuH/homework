@@ -1,4 +1,4 @@
-// makeProfileTimer
+// makeProfileTimer 
 
 let time = performance.now()
 
