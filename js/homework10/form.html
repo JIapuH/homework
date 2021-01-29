@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HW 10, Form</title>
+</head>
+
+<body>
+  <script>
+    //Password
+
+    function Password(parent, open) {
+      let inputPassword = document.createElement("input");
+      let inputPasswordCheck = document.createElement("input");
+      parent.appendChild(inputPassword);
+      parent.appendChild(inputPasswordCheck).type = "checkbox";
+      if (open) {
+        inputPasswordCheck.checked = open;
+        inputPassword.type = "text";
+      } else {
+        inputPasswordCheck.checked = open;
+        inputPassword.type = "password";
+      }
+
+      this.setValue = function (password) {
+        inputPassword.value = password;
+      };
+
+      this.getValue = () => inputPassword.value;
+      this.setOpen = function (option) {
+        option ? (inputPasswordCheck.checked = option) : (inputPasswordCheck.checked = option);
+        option ? (inputPassword.type = "text") : (inputPassword.type = "password");
+      };
+
+      this.getOpen = () => inputPasswordCheck.checked;
+
+      this.onOpenChange = () => {};
+      this.onChange = () => {};
+
+      function clickCheck() {
+        inputPasswordCheck.checked ? (inputPassword.type = "text") : (inputPassword.type = "password");
+      }
+
+      inputPasswordCheck.onclick = () => {
+        clickCheck();
+        this.onOpenChange();
+      };
+
+      inputPassword.oninput = () => this.onChange();
+    }
+
+    let p = new Password(document.body, true);
+    p.setValue("qwerty");
+    console.log(p.getValue() + " // getValue method");
+    p.setOpen(true);
+    console.log(p.getOpen() + " // getOpen method");
+
+    //LoginForm
+
+    //create a new div element
+    let loginForm = document.createElement("div");
+    let loginFormHead = document.createElement("h2");
+
+    document.body.appendChild(loginFormHead);
+    loginFormHead.innerText = "LoginForm"
+    loginFormHead.setAttribute("style", "margin: 20px 0 5px");
+
+    document.body.appendChild(loginForm);
+    loginForm.setAttribute("style", "margin: 10px 0;");
+    loginForm.setAttribute("id", "loginFormDiv");
+
+    // create login field
+    let loginElement = new Password(loginForm, true);
+    loginForm.querySelector('input[type="checkbox"]').remove();
+    loginFormDiv.children[0].placeholder = "Enter your login";
+
+    // create password field
+    let passwordElement = new Password(loginForm, true);
+    loginForm.querySelector('input[type="checkbox"]').remove();
+    loginForm.setAttribute("style", "margin: 10px 0;");
+    loginFormDiv.children[1].setAttribute("style", "margin: 0 5px");
+    loginFormDiv.children[1].setAttribute("placeholder", "Enter your password");
+
+    // create a button
+    let loginButton = document.createElement("button");
+    loginFormDiv.appendChild(loginButton).innerText = "LogIn Button";
+    loginButton.setAttribute("id", "button");
+    loginButton.setAttribute("disabled", "");
+
+    //toggle function
+    passwordElement.onChange = loginElement.onChange = () => {
+      if (loginElement.getValue() && passwordElement.getValue()) {
+        loginButton.removeAttribute("disabled");
+      } else {
+        loginButton.setAttribute("disabled", "");
+      }
+    };
+
+    //Password Verify
+
+    //create container form
+    let passwordForm = document.createElement("div");
+    let passwordFormHead = document.createElement("h2");
+
+    document.body.appendChild(passwordFormHead);
+    passwordFormHead.innerText = "PasswordForm"
+    passwordFormHead.setAttribute("style", "margin: 20px 0 5px");
+
+    document.body.appendChild(passwordForm);
+    passwordForm.setAttribute("id", "passwordFormDiv");
+
+    //create first Input password
+    let visiblePasswordInput = new Password(passwordForm, false);
+    passwordFormDiv.children[0].setAttribute("style", "margin: 0 5px 0 0");
+    visiblePasswordInput.setValue("qwerty");
+    let defaultPassword = visiblePasswordInput.getValue();
+
+    //create second Input password
+    let hiddenPasswordInput = new Password(passwordForm, false);
+    passwordForm.querySelector('input[type="checkbox"]').remove();
+    passwordFormDiv.children[1].setAttribute("id", "hiddenInput");
+    hiddenInput.setAttribute("placeholder", "Enter your password");
+
+    //create button
+    let passwordButton = document.createElement("button");
+    passwordButton.setAttribute("id", "passwordButton");
+
+    //check password function
+    hiddenPasswordInput.onChange = visiblePasswordInput.onChange = () => {
+      hiddenPasswordInput.getValue() === visiblePasswordInput.getValue() ||
+        (hiddenPasswordInput.getOpen() && visiblePasswordInput.getValue() === defaultPassword) ?
+        passwordHideButton(passwordFormDiv, passwordButton, true) :
+        passwordHideButton(passwordFormDiv, passwordButton, false);
+    };
+
+    //toggle function
+    hiddenPasswordInput.onOpenChange = () => {
+      if (hiddenPasswordInput.getOpen()) {
+        hiddenInput.setAttribute("style", "display = none");
+        visiblePasswordInput.setOpen(hiddenPasswordInput.getOpen());
+        passwordHideButton(passwordFormDiv, passwordButton, true);
+      } else {
+        hiddenInput.setAttribute("style", "display = initial");
+        passwordHideButton(passwordFormDiv, passwordButton, false);
+        visiblePasswordInput.setOpen(hiddenPasswordInput.getOpen());
+      }
+    };
+
+    //hide or visible function for button
+    function passwordHideButton(checkForm, checkButton, boolean) {
+      boolean ? (checkForm.appendChild(checkButton).innerText = "Password Button") : checkButton.remove();
+      checkButton.setAttribute("style", "margin-left: 5px");
+    }
+  </script>
+</body>
+
+</html>
