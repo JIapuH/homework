@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#wrapper {
+    width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+    margin: 15px 0 0;
+}
+
+li {
+    margin: 15px;
+}
+
+img {
+    width: 200px;
+    margin: auto;
+}
+
+.goodCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 400px;
+    border: 1px solid;
+    margin: 5px;
+    border-radius: 5px;
+    padding-bottom: 20px;
+}
+
+.goodCard:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: box-shadow .3s ease;
+}
+
+#conteinerForGoods {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    text-align: center;
+    margin: 0 auto;
+}
