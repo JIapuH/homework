@@ -1,0 +1,30 @@
+canvas {
+    border: 2px solid black;
+    margin: 20px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.buttonDiv {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    margin-top: 20px;
+}
+
+button {
+    margin-bottom: 10px;
+    width: 100px;
+}
+
+#size {
+    width: 70px;
+}
+
+.selectDiv {
+    text-align: left;
+    margin-left: 20px;
+}
